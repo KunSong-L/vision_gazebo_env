@@ -6,7 +6,7 @@
 
   <!-- spawn urdf model to gazebo -->
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-  <node  name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-x -1 -y 0 -z 1.0 -unpause -urdf -model test_model -param robot_description" respawn="false" output="screen" />
+  <node  name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-x -0.25 -y 0 -z 1.0 -unpause -urdf -model test_model -param robot_description" respawn="false" output="screen" />
 
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
