@@ -14,13 +14,6 @@ sudo apt-get install gazebo7 -y
 ```
 
 ## 安装
-### 安装依赖
-```
-cd ~/catkin_ws/src
-git clone https://github.com/nilseuropa/realsense_ros_gazebo
-```
-如果编译遇到Name()和SimTime()的报错，可以将Name()改为GetName()，然后把SimTime()改成GetSimTime()
-### 安装
 
 ```
 cd ~/catkin_ws/src
