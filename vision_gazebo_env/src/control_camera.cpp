@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     double del_theta = sim_time_step * 2*M_PI / angle_T;
     double x,y,z;
     double del_z = z_T_size * sim_time_step / angle_T;
-    double R = 1;
+    double R = 0.25;
 
     while(ros::ok()) {
         
