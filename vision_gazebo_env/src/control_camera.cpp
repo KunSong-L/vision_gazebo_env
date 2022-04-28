@@ -32,8 +32,8 @@ int main(int argc, char **argv) {
     des_model_state.twist = twist;
     des_model_state.reference_frame = "world";
 
-    double sim_time_step = 0.01;//多少时间更新一次模型
-    double angle_T = 10;//旋转周期
+    double sim_time_step = 0.1;//多少时间更新一次模型
+    double angle_T = 20;//旋转周期
     double z_T_size = 0.2;//旋转一周上升距离
 
     double qx,qy,qz,qw;
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     double del_theta = sim_time_step * 2*M_PI / angle_T;
     double x,y,z;
     double del_z = z_T_size * sim_time_step / angle_T;
-    double R = 0.25;
+    double R = 0.15;
 
     while(ros::ok()) {
         
@@ -63,6 +63,8 @@ int main(int argc, char **argv) {
         quat.y = qy/norm;
         quat.z = qz/norm;
         
+        std::cout<<"R= "<<R<<"  x="<<x<<" y= "<<y<<" z=  "<<z<<" theta ="<<theta<<std::endl;
+
         pose.orientation= quat;
         pose.position.x = x;
         pose.position.y = y;

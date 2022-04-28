@@ -25,6 +25,7 @@
         <box size="0.01 0.01 0.01"/>
       </geometry>
     </collision>
+    <gravity>0</gravity>
   </link>
 
   <!-- TEST -->
