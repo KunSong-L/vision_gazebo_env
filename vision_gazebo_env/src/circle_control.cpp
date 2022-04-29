@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
     des_model_state.twist = twist;
     des_model_state.reference_frame = "world";
 
-    double sim_time_step = 0.1;//多少时间更新一次模型
+    double sim_time_step = 0.05;//多少时间更新一次模型
     double angle_T = 20;//旋转周期
     double z_T_size = 0.2;//旋转一周上升距离
 
@@ -42,9 +42,11 @@ int main(int argc, char **argv) {
     double del_theta = sim_time_step * 2*M_PI / angle_T;
     double x,y,z;
     double del_z = z_T_size * sim_time_step / angle_T;
-    double R = 0.15;
+    double R = 0.25;
 
-    z = 0.18;//保持这个值和初始状态一致
+    del_z = 0;
+
+    z = 0.5;//保持这个值和初始状态一致
     while(ros::ok()) {
         
         theta += del_theta;

@@ -33,3 +33,6 @@ include_directories(
 
 add_executable(control_camera src/control_camera.cpp)
 target_link_libraries(control_camera ${catkin_LIBRARIES})
+
+add_executable(circle_control src/circle_control.cpp)
+target_link_libraries(circle_control ${catkin_LIBRARIES})

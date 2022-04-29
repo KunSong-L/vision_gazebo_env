@@ -131,8 +131,8 @@
         <camera name="${sensor_name}">
           <horizontal_fov>${69.4*deg_to_rad}</horizontal_fov>
           <image>
-            <width>640</width>
-            <height>480</height>
+            <width>1280</width>
+            <height>720</height>
             <format>RGB_INT8</format>
           </image>
           <clip>
