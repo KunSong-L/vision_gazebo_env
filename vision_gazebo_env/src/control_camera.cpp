@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
     des_model_state.reference_frame = "world";
 
     double sim_time_step = 0.1;//多少时间更新一次模型
-    double angle_T = 10;//旋转周期
+    double angle_T = 20;//旋转周期
     double z_T_size = 0.2;//旋转一周上升距离
 
     double qx,qy,qz,qw;
@@ -45,6 +45,41 @@ int main(int argc, char **argv) {
     double R = 0.15;
 
     z = 0.18;//保持这个值和初始状态一致
+    //先旋转一周然后向上
+    del_z = 0;
+    for(int i =0; i < int(angle_T/sim_time_step);i++)
+    {
+        theta += del_theta;
+
+        qw = cos(theta/2);
+        qx = 0.0;
+        qy = 0.0;
+        qz = sin(theta/2);
+
+        x = R*cos(theta + init_pos_theta);
+        y = R*sin(theta + init_pos_theta);
+        z += del_z;
+
+        double norm = sqrt(qx*qx+qy*qy+qz*qz+qw*qw);
+        quat.w = qw/norm;
+        quat.x = qx/norm;
+        quat.y = qy/norm;
+        quat.z = qz/norm;
+        
+        std::cout<<"R= "<<R<<"  x="<<x<<" y= "<<y<<" z=  "<<z<<" theta ="<<theta<<std::endl;
+
+        pose.orientation= quat;
+        pose.position.x = x;
+        pose.position.y = y;
+        pose.position.z = z;
+        des_model_state.pose = pose;
+        set_model_state_srv.request.model_state = des_model_state;
+        client.call(set_model_state_srv);
+        ros::spinOnce();
+        ros::Duration(sim_time_step).sleep();
+    }
+
+    del_z = z_T_size * sim_time_step / angle_T;
     while(ros::ok()) {
         
         theta += del_theta;

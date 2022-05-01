@@ -106,7 +106,7 @@
     </include -->
 
     <include> <!-- Add your custom model -->
-      <uri>model://missile_model_color</uri>
+      <uri>model://missile_model</uri>
       <name>missile</name>
       <pose>0 0 0 0 0 0</pose>
     </include>
