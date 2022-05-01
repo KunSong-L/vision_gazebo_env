@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
     des_model_state.reference_frame = "world";
 
     double sim_time_step = 0.1;//多少时间更新一次模型
-    double angle_T = 20;//旋转周期
+    double angle_T = 10;//旋转周期
     double z_T_size = 0.2;//旋转一周上升距离
 
     double qx,qy,qz,qw;
