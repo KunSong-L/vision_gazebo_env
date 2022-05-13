@@ -18,7 +18,7 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
       <arg name="use_sim_time" value="true"/>
       <arg name="debug" value="false"/>
-      <arg name="world_name" value="$(find vision_gazebo_env)/model/worlds/no_cylinder.world"/>
+      <arg name="world_name" value="$(find vision_gazebo_env)/model/worlds/cylinder.world"/>
     </include>
   
     <!-- state publishers -->
