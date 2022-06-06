@@ -23,11 +23,16 @@ catkin_make
 ```
 
 ## 运行
+运行仅有相机的仿真环境
 ```
 roslaunch vision_gazebo_env vision_gazebo_env.launch
 rosrun vision_gazebo_env control_camera
 ```
-
+运行整个机器人的仿真环境
+```
+roslaunch vision_gazebo_env vision_robot.launch
+rosrun vision_gazebo_env control_joint.py
+```
 
 # Gazebo simulation environment based on realsense
 Based on ubuntu 16.04LTS and ROS kinetic, the visual simulation environment is realized, and the arbitrary trajectory motion of the camera is realized. It can be used for SFM or SLAM.
@@ -63,7 +68,14 @@ catkin_make
 ````
 
 ## run
-````
+for camera simulation
+```
 roslaunch vision_gazebo_env vision_gazebo_env.launch
 rosrun vision_gazebo_env control_camera
-````
+```
+
+for robot simulation
+```
+roslaunch vision_gazebo_env vision_robot.launch
+rosrun vision_gazebo_env control_joint.py
+```

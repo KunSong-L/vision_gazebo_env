@@ -73,6 +73,7 @@ base_pose = 0.5
 
 rate = rospy.Rate(5)  # 10hz
 
+camera_last_state = 1
 
 while not rospy.is_shutdown():
     state_control = state_control_total[state_num]
@@ -115,8 +116,14 @@ while not rospy.is_shutdown():
     # check camera
     if camera_theta > upper_camera_theta:
         state_control[3] = -1
+        camera_last_state = -1
     elif camera_theta < lower_camera_theta:
+        print('lower')
         state_control[3] = 1
+        camera_last_state = 1
+    else:
+        state_control[3] = camera_last_state
+
 
     reset_req.joint_positions = now_joint_positions  # list
     # reset_req.joint_positions = [-theta,2*theta,-theta] #list
@@ -127,3 +134,5 @@ while not rospy.is_shutdown():
     state_msg.pose.position.z = base_pose
     reset_state(state_msg)
     rate.sleep()
+    print(camera_theta)
+    print(state_control[3])
